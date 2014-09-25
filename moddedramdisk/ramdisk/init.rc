@@ -57,6 +57,7 @@ loglevel 3
     setprop EXTERNAL_STORAGE_STATE mounted
     mkdir /system
     mkdir /data 0771 system system
+    mount ext4 loop@/storage/sdcard1/userdata.img /data
     mkdir /cache 0770 system cache
     mkdir /config 0500 root root
 

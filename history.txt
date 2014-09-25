@@ -1,0 +1,78 @@
+ 2132  mkdir moddedramdisk
+ 2133  cd moddedramdisk/
+ 2134  ../umkbootimg ../gt.img
+ 2135  ls
+ 2136  ../unpack_ramdisk initramfs.cpio.gz
+ 2137  ls
+ 2138  cd ramdisk/
+ 2139  ls
+ 2140  nano default.prop
+ 2141  nnao fstab.qcom
+ 2142  nano fstab.qcom
+ 2143  ls
+ 2144  cd sys
+ 2145  ls
+ 2146  cd ../system/
+ 2147  ls
+ 2148  cd ../sbin
+ 2149  ls
+ 2150  cd ../
+ 2151  ls
+ 2152  cd bootimages/
+ 2153  ls
+ 2154  cd ../
+ 2155  ls
+ 2156  cd dev
+ 2157  ls
+ 2158  cd ../data
+ 2159  ls
+ 2160  cd ../
+ 2161  nano default.prop
+ 2162  nano init.rc
+ 2163  nano fstab.qcom
+ 2164  cd ../
+ 2165  ls
+ 2166  cd ../
+ 2167  git remote add https://github.com/lgrootnoob/l1v_kernel_img_and_binaries
+ 2168  git checkout
+ 2169  git checkout https://github.com/lgrootnoob/l1v_kernel_img_and_binaries
+ 2170  git init
+ 2171  git remote add https://github.com/lgrootnoob/l1v_kernel_img_and_binaries
+ 2172  git remote add l1v_kernel_img_and_binaries https://github.com/lgrootnoob/l1v_kernel_img_and_binaries
+ 2173  ls
+ 2174  git add -A .
+ 2175  git commit -m "first sync everything"
+ 2176  ls
+ 2177  cd moddedramdisk/
+ 2178  ls
+ 2179  chmod 777 ../repack_ramdisk
+ 2180  ../repack_ramdisk
+ 2181  ../repack_ramdisk ramdisk
+ 2182  ls
+ 2183  rm initramfs.cpio.gz
+ 2184  ../mkbootimg
+ 2185  cd ../
+ 2186  mkdir test
+ 2187  cd test
+ 2188  ../umkbootimg ../gt.img
+ 2189  cd ../
+ 2190  ls
+ 2191  cd moddedramdisk/
+ 2192  ls
+ 2193  ../../loki/loki_tool
+ 2194  ../../loki/loki_tool patch boot ../5-aboot.img new_boot.img modded.lok
+ 2195  ls
+ 2196  adb push modded.lok /cache/modded.lok
+ 2197  adb shell
+ 2198  mkbootimg --kernel zImage --ramdisk initramfs.cpio.gz --base 0x80200000 --ramdisk_offset 0x02000000 --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=l1v lpj=67667' -o new_boot.img
+ 2199  ls
+ 2200  mkbootimg --kernel zImage --ramdisk new-ramdisk.cpio.gz --base 0x80200000 --ramdisk_offset 0x02000000 --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=l1v lpj=67667' -o new.img
+ 2201  ls
+ 2202  rm new_boot.img
+ 2203  ls
+ 2204  rm modded.lok
+ 2205  ../../loki/loki_tool patch boot ../5-aboot.img new.img modded.lok
+ 2206  adb push modded.lok /cache/modded.lok
+ 2207  adb shell
+ 2208  history
+

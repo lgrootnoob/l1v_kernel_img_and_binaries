@@ -65,7 +65,13 @@ loglevel 3
     write /sys/fs/cgroup/memory/sw/memory.move_charge_at_immigrate 1
     chown root system /sys/fs/cgroup/memory/sw/tasks
     chmod 0660 /sys/fs/cgroup/memory/sw/tasks
-
+    mkdir /storage
+    mkdir /storage/sdcard1
+    chown system system /storage
+    chmod 0777 /storage
+    chown system system /storage/sdcard1
+    chmod 0777 /storage/sdcard1
+    mount vfat /dev/block/platform/msm_sdcc.3/by-num/p1 /storage/sdcard1
     mkdir /system
     mkdir /data 0771 system system
     mkdir /cache 0771 system cache

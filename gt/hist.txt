@@ -1,0 +1,1000 @@
+ 1063  ./umkbootimg 
+ 1064  ls
+ 1065  cd ../cyan
+ 1066  nano recimg.sh 
+ 1067  cd ../tools\ and\ parts/
+ 1068  adb pull /cache/out.lok last.lok
+ 1069  cd ../cyan
+ 1070  nano recimg.sh 
+ 1071  cat device/lge/l1v/recovery/postrecoveryboot.sh 
+ 1072  nano device/lge/l1v/recovery/postrecoveryboot.sh 
+ 1073  make clobber
+ 1074  repo sync
+ 1075  make clobber
+ 1076  repo sync
+ 1077  mv recimg.sh rec.sh
+ 1078  chmod 777 rec.sh 
+ 1079  . ./rec.sh 
+ 1080  . ./rec.sh inst
+ 1081  adb reboot recovery
+ 1082  cd bootable/recovery/res
+ 1083  ls
+ 1084  cd images
+ 1085  ls
+ 1086  nautilus .
+ 1087  cd ../../../../../tools\ and\ parts/
+ 1088  ls
+ 1089  cat ../cyan/rec.sh 
+ 1090  adb shell
+ 1091  adb push lt /sbin/lt
+ 1092  ls
+ 1093  ls -al last.lok 
+ 1094  cp last.lok /media/jacob/My\ Passport/android/Flash/out.lok
+ 1095  ls
+ 1096  cd ../cyan
+ 1097  adb shell
+ 1098  cd device/lge/l1v/recovery/
+ 1099  nano postrecoveryboot.sh 
+ 1100  cd ..
+ 1101  nano fstab.l1v 
+ 1102  cd ../../../
+ 1103  cd out/target/product/l1v/
+ 1104  ls
+ 1105  cd recovery/
+ 1106  ls
+ 1107  cd root
+ 1108  ls
+ 1109  cd ../../
+ 1110  ls
+ 1111  cd system/
+ 1112  ls
+ 1113  cd lib
+ 1114  ls
+ 1115  cd modules/
+ 1116  ls
+ 1117  cd ../../
+ 1118  ls
+ 1119  cd extras/
+ 1120  ls
+ 1121  cd ext4_utils/
+ 1122  ls
+ 1123  cd ../
+ 1124  ls
+ 1125  cd cd ..
+ 1126  cd ../
+ 1127  cd ../../../../
+ 1128  cd bootable/recovery/res/images/
+ 1129  ls
+ 1130  nautilus .
+ 1131  adb shell
+ 1132  cd ../../../../device/lge/l1v/
+ 1133  git add -A .
+ 1134  git commit -m "attempt to fixup mounting of img"
+ 1135  git push
+ 1136  adb shell
+ 1137  adb pull /external_sd/this.png
+ 1138  ls
+ 1139  nautilus .
+ 1140  rm this.png 
+ 1141  adb shell
+ 1142  cd ../../../bootable/recovery
+ 1143  ls
+ 1144  nano ui.c 
+ 1145  nano recovery
+ 1146  nano recovery.c
+ 1147  nano ui.c 
+ 1148  cd ../../
+ 1149  . ./rec.sh 
+ 1150  . ./rec.sh  inst
+ 1151  adb reboot recovery
+ 1152  cd bootable/recovery
+ 1153  ls
+ 1154  nano ui.c
+ 1155  cd ../../
+ 1156  . ./rec.sh 
+ 1157  . ./rec.sh inst
+ 1158  adb reboot recovery
+ 1159  nano rec.sh 
+ 1160  cd bootable/recovery
+ 1161  nano ui.c
+ 1162  find ./ -type f | xargs grep -l "color"
+ 1163  ls res/images
+ 1164  nano ./minui/minui.h
+ 1165  nano ./minui/graphics.c
+ 1166  find ./ -type f | xargs grep -l "gr_color"
+ 1167  nano ui.c
+ 1168  cd ../../
+ 1169  . ./rec.sh 
+ 1170  find ./device/lge/l1v -type f | xargs grep -l "secure"
+ 1171  . ./rec.sh inst
+ 1172  nano rec.sh 
+ 1173  adb shell
+ 1174  ls
+ 1175  cd ../tools\ and\ parts/
+ 1176  ls
+ 1177  file userdata.img 
+ 1178  rm userdata.img 
+ 1179  adb shell
+ 1180  cd ../cyan/bootable/recovery/res/images/
+ 1181  ls
+ 1182  nautilus .
+ 1183  cd ../../
+ 1184  nano recovery.c
+ 1185  nano ui.c
+ 1186  find /path/to/dir -type f -print0 | xargs -0 grep -l "HEADER_TEXT_COLOR"
+ 1187  find ./ -type f -print0 | xargs -0 grep -l "HEADER_TEXT_COLOR"
+ 1188  nano common.h 
+ 1189  cd ../../
+ 1190  cd bootable/recovery
+ 1191  nano common.h 
+ 1192  croot
+ 1193  nano rec.sh 
+ 1194  . ./rec.sh 
+ 1195  . ./rec.sh inst
+ 1196  adb shell
+ 1197  . ./rec.sh inst
+ 1198  adb reboot recovery
+ 1199  mka
+ 1200  cd out/target/product/l1v/
+ 1201  ls
+ 1202  file kernel 
+ 1203  cd ../../../../
+ 1204  nano rec.sh 
+ 1205  . ./rec.sh inst
+ 1206  nano rec.sh 
+ 1207  . ./rec.sh inst
+ 1208  adb reboot recovery
+ 1209  cd kernel/lge/l1v/
+ 1210  find ./ -type f -print0 | xargs -0 grep -l "3.4.0"
+ 1211  find ./ -type f -print0 | xargs -0 grep -l "lge"
+ 1212  adb shell uname -a
+ 1213  cd ../../../bootable/recovery
+ 1214  ls
+ 1215  nano common.h 
+ 1216  "git ls-files -d | xargs git checkout --"
+ 1217  "git ls-files -d | xargs git checkout"
+ 1218  git ls-files -d | xargs git checkout --
+ 1219  nano extendedcommands.
+ 1220  nano extendedcommands.c
+ 1221  nano recovery
+ 1222  nano recoveryc
+ 1223  nano recovery.c
+ 1224  rm recovery.c
+ 1225  git ls-files -d | xargs git checkout --
+ 1226  ls
+ 1227  nano adb_install.
+ 1228  nano adb_install.c
+ 1229  nano ui.c
+ 1230  find ./ -type f -print0 | xargs -0 grep -l "MENU_TEXT_COLOR"
+ 1231  nano common.h
+ 1232  find ./ -type f -print0 | xargs -0 grep -l "int r
+ 1233  find ./ -type f -print0 | xargs -0 grep -l "int r"
+ 1234  cd ../../
+ 1235  . ./rec.sh 
+ 1236  . ./rec.sh inst
+ 1237  adb reboot recovery
+ 1238  cd bootable/recovery
+ 1239  ls
+ 1240  nano ui.c 
+ 1241  cd ../../
+ 1242  nano rec.sh 
+ 1243  . ./rec.sh inst
+ 1244  adb reboot recovery
+ 1245  . ./rec.sh 
+ 1246  . ./rec.sh inst
+ 1247  adb reboot recovery
+ 1248  cd device/lge/l1v/
+ 1249  nano README.MD 
+ 1250  croot
+ 1251  cd kernel_source/drivers/cpufreq/
+ 1252  cd kernel/lge/l1v/drivers/cpufreq/
+ 1253  ls
+ 1254  nano Kconfig.arm
+ 1255  nano Kconfig
+ 1256  cd ../../
+ 1257  git add -A .
+ 1258  git commit -m "uhh, weed"
+ 1259  nano Kconfig
+ 1260  cd drivers/cpu
+ 1261  cd drivers/cpuf
+ 1262  cd drivers/cpufreq/
+ 1263  nano Kconfig
+ 1264  cd ../../arch/arm/configs/
+ 1265  nano l1v-cyanogenmod_defconfig 
+ 1266  cd ../../../
+ 1267  cd drivers/cpufreq/
+ 1268  ls
+ 1269  nano acpi-cpufreq.c 
+ 1270  rm cpufreq_userspace.c exynos4x12-cpufreq.c exynos5250-cpufreq.c exynos-cpufreq.c cpufreq_conservative.c cpufreq_conservative.c
+ 1271  rm cpufreq_userspace.c exynos4x12-cpufreq.c exynos5250-cpufreq.c exynos-cpufreq.c cpufreq_conservative.c
+ 1272  ls
+ 1273  rm cpufreq_powersave.c cpufreq_ondemand.c
+ 1274  ls
+ 1275  nano ../../arch/arm/configs/l1v-cyanogenmod_defconfig 
+ 1276  find ./ -type f -print0 | xargs -0 grep -l "CONFIG_CPU_FREQ_DEFAULT_GOV"
+ 1277  nano cpufreq_interactive.c 
+ 1278  nano Kconfig
+ 1279  nano ../../arch/arm/configs/l1v-cyanogenmod_defconfig 
+ 1280  cd ../../../../../
+ 1281  nano rec.sh 
+ 1282  cd kernel/lge/l1v/
+ 1283  cd arch/boo
+ 1284  cd ls
+ 1285  ls
+ 1286  cd arch
+ 1287  ls
+ 1288  cd arm
+ 1289  ls
+ 1290  cd pit
+ 1291  cd boot
+ 1292  ls
+ 1293  cd compressed/
+ 1294  ls
+ 1295  cd ../../../../
+ 1296  croot
+ 1297  cd out/target/product/l1v/
+ 1298  ls
+ 1299  cp ramdisk.img ../../../../../tools\ and\ parts/
+ 1300  cd ../../../../../
+ 1301  cd tools\ and\ parts/
+ 1302  ls
+ 1303  umkbootimg
+ 1304  ./umkbootimg
+ 1305  ./umkbootimg ramdisk.img 
+ 1306  ls
+ 1307  ./unpack_ramdisk ramdisk.img 
+ 1308  ls
+ 1309  cd ramdisk
+ 1310  ls
+ 1311  cat recovery.fstab 
+ 1312  cd ../../../Downloads/
+ 1313  ls
+ 1314  adb push lcd.zip /external_sd/lcd.zip
+ 1315  exit
+ 1316  git add . -A
+ 1317  git commit -m "Really fixed problems, testing now"
+ 1318  git push
+ 1319  cd ../../../../
+ 1320  make clobber
+ 1321  . ./recimg.sh 
+ 1322  nano recimg.sh 
+ 1323  . ./recimg.sh 
+ 1324  nano recimg.sh 
+ 1325  . ./recimg.sh 
+ 1326  nano recimg.sh 
+ 1327  . ./recimg.sh 
+ 1328  . ./recimg.sh inst
+ 1329  adb reboot recovery
+ 1330  cd device/lge/l1v/
+ 1331  cd recovery/
+ 1332  ls
+ 1333  nano postrecoveryboot.sh 
+ 1334  adb shell
+ 1335  nano postrecoveryboot.sh 
+ 1336  adb shell
+ 1337  nano postrecoveryboot.sh 
+ 1338  cd ../
+ 1339  ls
+ 1340  nano device_l1v.mk 
+ 1341  cd ../../../
+ 1342  . ./recimg.sh 
+ 1343  . ./recimg.sh inst
+ 1344  adb reboot recovery
+ 1345  adb reboot
+ 1346  cd device/lge/l1v/
+ 1347  git add -A .
+ 1348  git commit -m "deneuter sim tested and works now"
+ 1349  git push
+ 1350  adb reboot recovery
+ 1351  adb shell
+ 1352  adb reboot
+ 1353  adb shell
+ 1354  cd ../../../../tools\ and\ parts/
+ 1355  adb pull /storage/sdcard1/userdata.img
+ 1356  git fork https://github.com/PeterCassetta/android_device_lge_fx3t
+ 1357  cd ../cyan/bootable/recovery
+ 1358  find /path/to/dir -type f -print0 | xargs -0 grep -l "rainbow"
+ 1359  find ./ -type f -print0 | xargs -0 grep -l "rainbow"
+ 1360  nano recovery.c
+ 1361  nano ui.c
+ 1362  nano recovery.c
+ 1363  nano ui.c
+ 1364  find ./ -type f -print0 | xargs -0 grep -l "loki-fying"
+ 1365  nano adb_install.c
+ 1366  nano extendedcommands.
+ 1367  c
+ 1368  nano extendedcommands.c
+ 1369  nano adb_install.c
+ 1370  nano extendedcommands.c
+ 1371  cd ../../
+ 1372  . ./rec.sh 
+ 1373  . ./rec.s
+ 1374  adb reboot recovery
+ 1375  cd device/lge/l1v/recovery/
+ 1376  nano postrecoveryboot.sh 
+ 1377  cat ../fstab.l1v 
+ 1378  cd postrecoveryboot.sh 
+ 1379  nano postrecoveryboot.sh 
+ 1380  adb shell
+ 1381  nano postrecoveryboot.sh 
+ 1382  nano ../fstab.l1v 
+ 1383  nano postrecoveryboot.sh 
+ 1384  adb shell
+ 1385  cd ../../../../
+ 1386  cd device/lge/l1v/
+ 1387  git add -A .
+ 1388  git commit -m "move /data mount to img file on sdcard"
+ 1389  nano fstab.l1v 
+ 1390  cd recovery/
+ 1391  nano pos
+ 1392  nano postrecoveryboot.sh 
+ 1393  cd ..
+ 1394  git add -A .
+ 1395  git commit -m "fix up postrecoveryboot to represent new /data img place, ready for testing"
+ 1396  git push
+ 1397  cd ../../../
+ 1398  . ./rec.sh 
+ 1399  . ./rec.sh inst\
+ 1400  . ./rec.sh inst
+ 1401  adb reboot recovery
+ 1402  adb shell
+ 1403  cd bootable/recovery/res/images/
+ 1404  ls
+ 1405  nautilus .
+ 1406  cd ../../
+ 1407  nano ui.c 
+ 1408  cd ../../
+ 1409  adb shell
+ 1410  find /path/to/dir -type f -print0 | xargs -0 grep -l "/dev/block/platform/msm_sdcc.1/by-name/userdata"
+ 1411  find ./ -type f -print0 | xargs -0 grep -l "/dev/block/platform/msm_sdcc.1/by-name/userdata"
+ 1412  make clobber
+ 1413  . ./rec.sh 
+ 1414  . ./rec.sh
+ 1415  adb reboot recovery
+ 1416  cd device/lge/l1v/recovery/
+ 1417  cd ..
+ 1418  nano fstab.l1v 
+ 1419  cd ../../../
+ 1420  . ./rec.img
+ 1421  . ./rec.sh
+ 1422  . ./rec.sh inst
+ 1423  adb reboot recovery
+ 1424  mount -t "ntfs" -o "ro,uhelper=udisks2,nodev,nosuid,uid=1000,gid=1000,dmask=0077,fmask=0177" "/dev/sdb4" "/media/jacob/90C8BF5DC8BF3FF0
+ 1425  mount -t "ntfs" -o "ro,uhelper=udisks2,nodev,nosuid,uid=1000,gid=1000,dmask=0077,fmask=0177" "/dev/sdb4" "/media/jacob/90C8BF5DC8BF3FF0"
+ 1426  mkdir  /media/jacob/90C8BF5DC8BF3FF0
+ 1427  mount -t "ntfs" -o "ro,uhelper=udisks2,nodev,nosuid,uid=1000,gid=1000,dmask=0077,fmask=0177" "/dev/sdb4" "/media/jacob/90C8BF5DC8BF3FF0"
+ 1428  git clone https://github.com/lgrootnoob/android_kernel_lge_l1v.git kernel
+ 1429  git clone https://github.com/lgrootnoob/android_kernel_lge_l1v.git kernel2
+ 1430  nautilus .
+ 1431  cd kernel/lge/l1v/
+ 1432  git add -A .
+ 1433  make mrproper
+ 1434  git add -A .
+ 1435  git push
+ 1436  ls
+ 1437  git commit -m "first sync"
+ 1438  git push
+ 1439  git add -A .
+ 1440  git commit -m "tweak governors"
+ 1441  git push
+ 1442  cd ../../../
+ 1443  mka bootimage
+ 1444  cd ../tools\ and\ parts/
+ 1445  ls
+ 1446  umkbootimg modded.img
+ 1447  ./umkbootimg modded.img
+ 1448  cd ../cyan/device/lge/l1v/
+ 1449  nano BoardConfig.mk 
+ 1450  cd ../../../
+ 1451  exit
+ 1452  cd Desktop/cyan/
+ 1453  . ./rec.sh inst
+ 1454  cd ../
+ 1455  ls
+ 1456  cd tools\ and\ parts/
+ 1457  ls
+ 1458  ls -al last.lok 
+ 1459  nautilus .
+ 1460  exit
+ 1461  cd Desktop/cyan
+ 1462  cd device/lge/l1v/
+ 1463  nano BoardConfig.mk 
+ 1464  nano fstab.l1v
+ 1465  cd recovery/
+ 1466  nano postrecoveryboot.sh 
+ 1467  cd ../../../
+ 1468  cd ../
+ 1469  make clobber
+ 1470  repo sync
+ 1471  . ./rec.sh
+ 1472  nano rec.sh in
+ 1473  . ./rec.sh inst
+ 1474  adb reboot recovery
+ 1475  adb shell
+ 1476  exit
+ 1477  cd Desktop/cyan/device/lge/l1v/
+ 1478  nano recovery/postrecoveryboot.sh 
+ 1479  cd ../../../
+ 1480  . ./rec.sh 
+ 1481  adb reboot recovery
+ 1482  . ./rec.sh inst
+ 1483  adb reboot recovery
+ 1484  adb shell
+ 1485  cd ../
+ 1486  ls
+ 1487  cp GT.lok tools\ and\ parts/
+ 1488  cd tools\ and\ parts/
+ 1489  ls
+ 1490  mkdir gt
+ 1491  mv GT.lok gt
+ 1492  cd gt
+ 1493  ls
+ 1494  ../umkbootimg GT.lok
+ 1495  ls
+ 1496  file zImage 
+ 1497  cd initramfs.cpio.gz 
+ 1498  cd ..
+ 1499  ls
+ 1500  mkdir modded
+ 1501  mv modded.img modded
+ 1502  cd modded/
+ 1503  ../umkbootimg modded.img 
+ 1504  cd ../../cyan/device/lge/l1v/
+ 1505  nano BoardConfig.mk 
+ 1506  croot
+ 1507  . build/envsetup.sh 
+ 1508  lunch cm_l1v-eng 
+ 1509  mka bootimage
+ 1510  cd ../
+ 1511  cd tools\ and\ parts/
+ 1512  mkdir newboot
+ 1513  cd newboot/
+ 1514  cp /home/jacob/Desktop/cyan/out/target/product/l1v/boot.img
+ 1515  cp /home/jacob/Desktop/cyan/out/target/product/l1v/boot.img boot.img
+ 1516  ../umkbootimg boot.img 
+ 1517  cd ..
+ 1518  ls
+ 1519  cd gt
+ 1520  ls
+ 1521  cd ../
+ 1522  cd modded/
+ 1523  ls
+ 1524  gzip
+ 1525  gzip -x
+ 1526  gzip --x
+ 1527  ungzip 
+ 1528  gzip -h
+ 1529  gzip -d initramfs.cpio.gz 
+ 1530  ls
+ 1531  cpio
+ 1532  cpio --help
+ 1533  cpio -i initramfs.cpio 
+ 1534  ls
+ 1535  cpio -idv < ./initramfs.cpio 
+ 1536  ls
+ 1537  nautilus .
+ 1538  mkdir initramfs
+ 1539  cd initramfs
+ 1540  cpio -idv < ../initramfs.cpio 
+ 1541  ls
+ 1542  nano fstab.l1v
+ 1543  cat recovery.fstab 
+ 1544  ls
+ 1545  cd system
+ 1546  ls
+ 1547  cd ../sbin
+ 1548  ls
+ 1549  cd ../
+ 1550  cd sys
+ 1551  ls
+ 1552  cd ..
+ 1553  ls
+ 1554  cd proc
+ 1555  ls
+ 1556  cd ../
+ 1557  cd dev
+ 1558  ls
+ 1559  cd ../
+ 1560  cd data/
+ 1561  ls
+ 1562  cd ../
+ 1563  file init
+ 1564  nano init.rc
+ 1565  cd ../
+ 1566  ls
+ 1567  gzip -c initramfs.cpio 
+ 1568  cd Desktop/tools\ and\ parts/ls
+ 1569  cd Desktop/tools\ and\ parts/
+ 1570  ls
+ 1571  cd gt/
+ 1572  ls
+ 1573  cd ../modded/
+ 1574  ls
+ 1575  cd initramfs
+ 1576  ls
+ 1577  cd ../
+ 1578  cd ../gt
+ 1579  ls
+ 1580  gzip -d initramfs.cpio.gz 
+ 1581  cd ..
+ 1582  ls
+ 1583  mv gt/GT.lok GT.lok
+ 1584  rm -rf gt/
+ 1585  ls
+ 1586  ../loki/loki_tool 
+ 1587  ../loki/loki_tool unlok GT.lok gt.img
+ 1588  ls
+ 1589  mkdir gt
+ 1590  cd gt
+ 1591  ../umkbootimg ../gt.img 
+ 1592  cd ../
+ 1593  ls
+ 1594  cd modded/
+ 1595  ls
+ 1596  ../umkbootimg modded.img 
+ 1597  cd ../
+ 1598  ls
+ 1599  cd gt
+ 1600  ls
+ 1601  exit
+ 1602  8
+ 1603  10
+ 1604  16
+ 1605  cd Desktop/cyan/device/lge/l1v/
+ 1606  ls
+ 1607  git checkout -b internal
+ 1608  git add -A .
+ 1609  git commit -m "add internal data partition version:
+ 1610  git commit -m "add internal data partition version"
+ 1611  git push
+ 1612  git push --set-upstream origin internal
+ 1613  service lightdm stop
+ 1614  rm fstab.l1v.save 
+ 1615  git checkout master
+ 1616  ls
+ 1617  nano fstab.l1v 
+ 1618  cd recovery/
+ 1619  nano postrecoveryboot.sh 
+ 1620  git checkout interna;
+ 1621  git checkout internal
+ 1622  cd recovery
+ 1623  ls
+ 1624  nano postrecoveryboot.sh 
+ 1625  git checkout master
+ 1626  cd ..
+ 1627  ls
+ 1628  croot
+ 1629  cd ../../../../tools\ and\ parts/
+ 1630  ls
+ 1631  mkdir gtramdiskmod
+ 1632  cd gtramdiskmod/
+ 1633  cp ../gt.img .
+ 1634  ls
+ 1635  ../unpack gt.img 
+ 1636  ls
+ 1637  ../umkbootimg gt.img 
+ 1638  ls
+ 1639  cd gt
+ 1640  ls
+ 1641  cd ..
+ 1642  ls
+ 1643  cd gt
+ 1644  ls
+ 1645  cd ..
+ 1646  rm gt
+ 1647  rmdir gt
+ 1648  ls
+ 1649  gzip -dc initramfs.cpio.gz | cpio -idm -
+ 1650  ls
+ 1651  ls -a
+ 1652  gzip -d initramfs.cpio.gz 
+ 1653  ls
+ 1654  gzip -d <initramfs.cpio.gz 
+ 1655  l
+ 1656  gzip -d <initramfs.cpio
+ 1657  gzip -c initramfs.cpio 
+ 1658  ls
+ 1659  tar -cvzf initramfs.cpio.gz initramfs.cpio 
+ 1660  ls
+ 1661  rm initramfs.cpio
+ 1662  cpio -idm <initramfs.cpio.gz 
+ 1663  ls
+ 1664  rm "??"?T?N??}??3??_0??tݗ??(f?^??+????}x??#?Β????t?c???@?̼?y?v???s?B?????????{U????fvn??)???Wqm?-}??'????ˬ?n?8??}?g???>j?>???Za?"
+ 1665  ls
+ 1666  rm -rf "??"?T?N??}??3??_0??tݗ??(f?^??+????}x??#?Β????t?c???@?̼?y?v???s?B?????????{U????fvn??)???Wqm?-}??'????ˬ?n?8??}?g???>j?>???Za?`??"
+ 1667  ls
+ 1668  mc
+ 1669  apt-get install mc
+ 1670  mc
+ 1671  ls
+ 1672  gzip -d <initramfs.cpio.gz 
+ 1673  ls
+ 1674  gzip -d initramfs.cpio.gz 
+ 1675  ls
+ 1676  cpio -idm <initramfs.cpio
+ 1677  ls
+ 1678  man cpio
+ 1679  cpio -i -E initramfs.cpio 
+ 1680  cpio -i -E <initramfs.cpio 
+ 1681  cpio -i --E <initramfs.cpio 
+ 1682  cpio -i -E initramfs.cpio 
+ 1683  cpio -idv < initramfs.cpio 
+ 1684  ls
+ 1685  mv initramfs.cpio ../
+ 1686  cpio -idv < ../initramfs.cpio 
+ 1687  ls
+ 1688  cat initramfs.cpio 
+ 1689  ls
+ 1690  zcat
+ 1691  zcat initramfs.cpio 
+ 1692  l
+ 1693  rm initramfs.cpio 
+ 1694  ls
+ 1695  cd ../
+ 1696  ls
+ 1697  ../mkbootimg
+ 1698  cd mkbootimg 
+ 1699  ls
+ 1700  ./mkbootimg
+ 1701  chmod 777 mkbootimg 
+ 1702  ./mkbootimg
+ 1703  ls
+ 1704  ./unpack_ramdisk 
+ 1705  ./unpack_ramdisk initramfs.cpio.gz 
+ 1706  ls
+ 1707  cd boot
+ 1708  ls
+ 1709  cd ..
+ 1710  rm -rf boot ramdisk recovery
+ 1711  rm 2-sbl1.img 3-sbl2.img 4-sbl3.img 69-persist.img 6-rpm.img 70-cache.img 8-tz.img 
+ 1712  ls
+ 1713  rm 79-BackupGPT.img
+ 1714  ls
+ 1715  rm bootimg.cfg
+ 1716  ls
+ 1717  rm kernel
+ 1718  rm initrd.img
+ 1719  rm 1-modem.img 
+ 1720  rm 0-PrimaryGPT.img 
+ 1721  ls
+ 1722  rm initramfs.cpio initramfs.cpio.gz 
+ 1723  ls
+ 1724  rmdir gt
+ 1725  ls
+ 1726  rm -rf gt
+ 1727  ls
+ 1728  rm recovery.img
+ 1729  ls
+ 1730  mv last.lok ../info/internal.lok
+ 1731  ls
+ 1732  cd gtramdiskmod/m
+ 1733  cd gtramdiskmod/
+ 1734  ls
+ 1735  cd ../
+ 1736  rm -rf gtramdiskmod/
+ 1737  ls
+ 1738  mkdir moddedramdisk
+ 1739  cd moddedramdisk/
+ 1740  ../umkbootimg ../gt.img 
+ 1741  ls
+ 1742  ../unpack_ramdisk initramfs.cpio.gz 
+ 1743  ls
+ 1744  cd ramdisk/
+ 1745  ls
+ 1746  nano default.prop 
+ 1747  nnao fstab.qcom 
+ 1748  nano fstab.qcom 
+ 1749  ls
+ 1750  cd sys
+ 1751  ls
+ 1752  cd ../system/
+ 1753  ls
+ 1754  cd ../sbin
+ 1755  ls
+ 1756  cd ../
+ 1757  ls
+ 1758  cd bootimages/
+ 1759  ls
+ 1760  cd ../
+ 1761  ls
+ 1762  cd dev
+ 1763  ls
+ 1764  cd ../data
+ 1765  ls
+ 1766  cd ../
+ 1767  nano default.prop 
+ 1768  nano init.rc
+ 1769  nano fstab.qcom 
+ 1770  cd ../
+ 1771  ls
+ 1772  cd ../
+ 1773  git remote add https://github.com/lgrootnoob/l1v_kernel_img_and_binaries
+ 1774  git checkout
+ 1775  git checkout https://github.com/lgrootnoob/l1v_kernel_img_and_binaries
+ 1776  git init
+ 1777  git remote add https://github.com/lgrootnoob/l1v_kernel_img_and_binaries
+ 1778  git remote add l1v_kernel_img_and_binaries https://github.com/lgrootnoob/l1v_kernel_img_and_binaries
+ 1779  ls
+ 1780  git add -A .
+ 1781  git commit -m "first sync everything"
+ 1782  ls
+ 1783  cd moddedramdisk/
+ 1784  ls
+ 1785  chmod 777 ../repack_ramdisk 
+ 1786  ../repack_ramdisk 
+ 1787  ../repack_ramdisk ramdisk
+ 1788  ls
+ 1789  rm initramfs.cpio.gz 
+ 1790  ../mkbootimg 
+ 1791  cd ../
+ 1792  mkdir test
+ 1793  cd test
+ 1794  ../umkbootimg ../gt.img 
+ 1795  cd ../
+ 1796  ls
+ 1797  cd moddedramdisk/
+ 1798  ls
+ 1799  ../../loki/loki_tool 
+ 1800  ../../loki/loki_tool patch boot ../5-aboot.img new_boot.img modded.lok
+ 1801  ls
+ 1802  adb push modded.lok /cache/modded.lok
+ 1803  adb shell
+ 1804  mkbootimg --kernel zImage --ramdisk initramfs.cpio.gz --base 0x80200000 --ramdisk_offset 0x02000000 --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=l1v lpj=67667' -o new_boot.img
+ 1805  ls
+ 1806  mkbootimg --kernel zImage --ramdisk new-ramdisk.cpio.gz --base 0x80200000 --ramdisk_offset 0x02000000 --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=l1v lpj=67667' -o new.img
+ 1807  ls
+ 1808  rm new_boot.img 
+ 1809  ls
+ 1810  rm modded.lok 
+ 1811  ../../loki/loki_tool patch boot ../5-aboot.img new.img modded.lok
+ 1812  adb push modded.lok /cache/modded.lok
+ 1813  adb shell
+ 1814  history
+ 1815  nano ../history.txt
+ 1816  cd ..
+ 1817  git add -A .
+ 1818  git commit -m "working boot image with history.txt of commands"
+ 1819  git push
+ 1820  git remote add l1v_kernel_img_and_binaries https://github.com/lgrootnoob/l1v_kernel_img_and_binaries
+ 1821  git push l1v_kernel_img_and_binaries
+ 1822  git pull
+ 1823  git pull l1v_kernel_img_and_binaries
+ 1824  git checkout master
+ 1825  git push
+ 1826  git push l1v_kernel_img_and_binaries
+ 1827  git push --set-upstream l1v_kernel_img_and_binaries master
+ 1828  git pull
+ 1829  git pull  l1v_kernel_img_and_binaries
+ 1830  git pull  l1v_kernel_img_and_binaries master
+ 1831  git push --set-upstream l1v_kernel_img_and_binaries master
+ 1832  cd moddedramdisk/
+ 1833  ls
+ 1834  cd ramdisk/
+ 1835  ls
+ 1836  nano init.rc
+ 1837  cd ..
+ 1838  mkbootimg --kernel zImage --ramdisk new-ramdisk.cpio.gz --base 0x80200000 --ramdisk_offset 0x02000000 --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=l1v lpj=67667' -o new.img
+ 1839  mkbootimg
+ 1840  mkbootimg --kernel zImage --ramdisk new-ramdisk.cpio.gz --base 0x80200000 --ramdisk_offset 0x02000000 --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=l1v lpj=67667' -o new.img
+ 1841  ls
+ 1842  rm new.img
+ 1843  rm new-ramdisk.cpio.gz 
+ 1844  rm modded.lok 
+ 1845  ls
+ 1846  mkbootimg --kernel zImage --ramdisk new-ramdisk.cpio.gz --base 0x80200000 --ramdisk_offset 0x02000000 --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=l1v lpj=67667' -o new.img
+ 1847  mkbootimg --kernel zImage --ramdisk ramdisk --base 0x80200000 --ramdisk_offset 0x02000000 --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=l1v lpj=67667' -o new.img
+ 1848  mkbootimg --kernel zImage --ramdisk ../test/initramfs.cpio.gz --base 0x80200000 --ramdisk_offset 0x02000000 --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=l1v lpj=67667' -o new.img
+ 1849  ls
+ 1850  ../repack_ramdisk 
+ 1851  ../repack_ramdisk ramdisk initramfs
+ 1852  ls
+ 1853  mkbootimg --kernel zImage --ramdisk initramfs --base 0x80200000 --ramdisk_offset 0x02000000 --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=l1v lpj=67667' -o taco.img
+ 1854  ls
+ 1855  rm new.img 
+ 1856  ../../loki/loki_tool patch boot ../5-aboot.img taco.img taco.lok
+ 1857  adb push taco.lok /cache/taco.lok
+ 1858  adb shell
+ 1859  adb reset
+ 1860  adb kill-server
+ 1861  adb shell
+ 1862  cd ..
+ 1863  git add -A .
+ 1864  git commit -m "got it working"
+ 1865  git push
+ 1866  ls
+ 1867  cd modded
+ 1868  ls
+ 1869  cd initramfs
+ 1870  ls
+ 1871  nano init.cm.rc 
+ 1872  ls
+ 1873  nano recovery.fstab 
+ 1874  nano init.rc
+ 1875  cd ..
+ 1876  git add -A .
+ 1877  git commit -m "taco"
+ 1878  git push
+ 1879  ls
+ 1880  cd test/
+ 1881  ls
+ 1882  cd ../newboot/
+ 1883  ls
+ 1884  cd ../modded
+ 1885  ls
+ 1886  cd initramfs
+ 1887  ls
+ 1888  nano init.rc
+ 1889  cd ../
+ 1890  ls
+ 1891  rm initramfs.cpio initramfs.cpio.gz
+ 1892  ls
+ 1893  rm modded.img 
+ 1894  ls
+ 1895  ../repack_ramdisk 
+ 1896  ../repack_ramdisk initramfs initramfspart
+ 1897  ls
+ 1898  cd ..
+ 1899  ls
+ 1900  cd modded
+ 1901  ../mkbootimg 
+ 1902  mkbootimg --kernel zImage --ramdisk initramfs --base 0x80200000 --ramdisk_offset 0x02000000 --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=l1v lpj=67667' -o moddedmod.img
+ 1903  ls
+ 1904  mkbootimg --kernel zImage --ramdisk initramfspart --base 0x80200000 --ramdisk_offset 0x02000000 --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=l1v lpj=67667' -o moddedmod.img
+ 1905  cd ../
+ 1906  ls
+ 1907  cd cyan/
+ 1908  ls
+ 1909  cd kernel/
+ 1910  l
+ 1911  cd lge/l1v/
+ 1912  ls
+ 1913  git add -A .
+ 1914  git commit -m "other stuff"
+ 1915  cd ../../../
+ 1916  cd ../tools\ and\ parts/
+ 1917  ls
+ 1918  cd modded
+ 1919  ls
+ 1920  ../../loki/loki_tool patch boot ../5-aboot.img moddedmod.img modmod.lok
+ 1921  ls
+ 1922  adb shell
+ 1923  ls
+ 1924  adb push modmod
+ 1925  adb push modmod.lok /cache/modmod.lok
+ 1926  adb shell
+ 1927  cd ../../cyan/
+ 1928  mka bootimage
+ 1929  . build/envsetup.sh
+ 1930  lunch cm_l1v-eng 
+ 1931  mka bootimage
+ 1932  cp /home/jacob/Desktop/cyan/out/target/product/l1v/boot.img ../tools\ and\ parts/custom.img
+ 1933  cd ../tools\ and\ parts/
+ 1934  ls
+ 1935  mkdir custom
+ 1936  cd custom
+ 1937  ls
+ 1938  ../umkbootimg ../custom.img
+ 1939  mkbootimg --kernel zImage --ramdisk initramfs.cpio.gz --base 0x80200000 --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=l1v lpj=67667 androidboot.selinux=permissive' -o new_boot.img
+ 1940  ls
+ 1941  ../../loki/loki_tool patch boot ../5-aboot.img new_boot.img modmod.lok
+ 1942  adb shell
+ 1943  adb push modmod.lok /cache/modmod.lok
+ 1944  adb shell
+ 1945  mkbootimg --kernel zImage --ramdisk initramfs.cpio.gz --base 0x80200000 --cmdlin -o taco.img
+ 1946  ../mkbootimg --kernel zImage --ramdisk initramfs.cpio.gz --base 0x80200000 -o taco.img
+ 1947  ls
+ 1948  rm new_boot.img 
+ 1949  rm modmod.lok 
+ 1950  ls
+ 1951  ../../loki/loki_tool patch boot ../5-aboot.img taco.img modtaco.lok
+ 1952  ls
+ 1953  adb push modtaco.lok /cache/modtaco.lok
+ 1954  apt-get update
+ 1955  apt-get upgrade
+ 1956  apt-get dist-upgrade
+ 1957  service lightdm stop
+ 1958  poweroff
+ 1959  cd Desktop/Flash/
+ 1960  ls
+ 1961  rm in.lok 
+ 1962  mv last.lok in.lok
+ 1963  exit
+ 1964  cd Desktop/cyan/device/lge/l1v/
+ 1965  git checkout
+ 1966  git checkout internal
+ 1967  cd recovery/
+ 1968  nano postrecoveryboot.sh 
+ 1969  cd ../../../
+ 1970  cd ..
+ 1971  ls
+ 1972  . ./rec.sh 
+ 1973  cd ../tools\ and\ parts/
+ 1974  ls
+ 1975  cd ../cyan
+ 1976  nano rec.sh 
+ 1977  . ./rec.sh inst
+ 1978  cd ../tools\ and\ parts/
+ 1979  ls
+ 1980  adb shell
+ 1981  service ssh stop
+ 1982  update-rc.d ssh defaults
+ 1983  service ssh restart
+ 1984  exit
+ 1985  tcpdump -n -i eth0 tcp port 22 and host 192.168.1.135
+ 1986  tcpdump -n -i eth2 tcp port 22 and host 192.168.1.135
+ 1987  tcpdump -n -i eth2 tcp port 22 and host 192.168.1.68
+ 1988  exit
+ 1989  ls
+ 1990  cd Desktop/cyan/
+ 1991  ls
+ 1992  cat d.sh 
+ 1993  nano rec.sh 
+ 1994  cd ../
+ 1995  ls
+ 1996  exit
+ 1997  cd Desktop/tools\ and\ parts/
+ 1998  ls
+ 1999  ifconfig
+ 2000  ping 192.168.1.138
+ 2001  ping 192.168.1.68
+ 2002  sysctl net.ipv4.icmp_echo_ignore_all
+ 2003  screen -r
+ 2004  screen -D -r 26997.pts-9.jacob-System-Product-Name
+ 2005  cd Desktop/cyan/kernel/lge/l1v/
+ 2006  gedit  mm/page_alloc.c.rej &
+ 2007  find . -name \*.rej | xargs rm
+ 2008  git clean
+ 2009  cd ../../../
+ 2010  cd ../tools\ and\ parts/
+ 2011  ls
+ 2012  mkdir modded
+ 2013  cd modded
+ 2014  ../umkbootimg  ../modded
+ 2015  ../umkbootimg  ../modded.img
+ 2016  ls
+ 2017  ../unpack_ramdisk initramfs.cpio.gz 
+ 2018  ls
+ 2019  cd ramdisk/
+ 2020  ls
+ 2021  cd ../
+ 2022  rm ramdisk/
+ 2023  rm -rf ramdisk/
+ 2024  cd ..
+ 2025  ls
+ 2026  cd moddedramdisk/
+ 2027  ls
+ 2028  cd ..
+ 2029  ls
+ 2030  mkdir gt
+ 2031  cd gt
+ 2032  ../umkbootimg ../gt.img
+ 2033  ls
+ 2034  ../unpack_ramdisk initramfs.cpio.gz 
+ 2035  ls
+ 2036  cp -R ramdisk/ ../modded/ramdisk
+ 2037  cd ../modded/ramdisk/
+ 2038  ls
+ 2039  cd ../
+ 2040  ls
+ 2041  rm initramfs.cpio.gz 
+ 2042  ../repack_ramdisk ramdisk
+ 2043  ls
+ 2044  ../mkbootimg --kernel zImage --ramdisk new-ramdisk.cpio.gz --base 0x80200000 --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=l1v lpj=67667' -o new_boot.img
+ 2045  ls
+ 2046  ../../loki/loki_tool patch boot ../5-aboot.img new_boot.img new.lok
+ 2047  adb push new.lok /cache/new.lok
+ 2048  adb shell
+ 2049  ls
+ 2050  ls -l zImage 
+ 2051  ls -l new.lok
+ 2052  adb shell
+ 2053  cd ../
+ 2054  cd gt
+ 2055  ls
+ 2056  mkbootimg --kernel ../modded/zImage --ramdisk initramfs.cpio.gz --ramdisk-offset 0x02000000 --base 0x80200000 --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=l1v lpj=67667 androidboot.selinux=permissive' -o new_boot.img
+ 2057  mkbootimg --kernel ../modded/zImage --ramdisk initramfs.cpio.gz --ramdisk_offset 0x02000000 --base 0x80200000 --cmdline 'console=ttyHSL0,115200,n8 androidboot.hardware=l1v lpj=67667' -o new_boot.img
+ 2058  ls
+ 2059  ../../loki/loki_tool patch boot ../5-aboot.img new_boot.img newboot.lok
+ 2060  adb push newboot.lok /cache
+ 2061  adb shell
+ 2062  history > hist.txt

@@ -1,0 +1,489 @@
+# Copyright (c) 2012, Code Aurora Forum. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of Code Aurora Forum, Inc. nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#
+
+####
+# Below configurations are from Qcom's init.target.rc
+# You SHOULD NOT add or delete below configurations to keep the qcom's history.
+# Please comment out if you disable the configurations.
+
+# LGE init.rc rule
+# init.qcom.rc == init.fx1.rc
+# init.target.rc == init.11v.rc
+#
+# init.rc
+#  |
+#  --> init.l1v.rc
+#       |
+#       --> init.fx1.rc
+#
+
+
+# device grand rc
+import /init.fx1.rc
+
+# vendor lge rc
+import /init.lge.rc
+
+
+on early-init
+    mkdir /firmware 0771 system system
+    symlink /data/tombstones /tombstones
+
+# LG animated logo
+on init
+    start bootlogo
+
+# 2012.09.21 yuntaek.kim@lge.com Add Immersion Vibrator[S]
+    # Set a path to TMP folder (RW accessible)
+    export VIBE_PIPE_PATH /dev/pipes
+    mkdir /dev/pipes 0771 shell shell
+# 2012.09.21 yuntaek.kim@lge.com Add Immersion Vibrator[E]
+
+on fs
+    mount_all fstab.qcom
+
+    # LGE_UPDATE_START
+    # Executing tune2fs to reserve some region in /data. (40MB)
+    # 2012-02-02 G1-FS@lge.com
+    exec /system/bin/tune2fs -u system -r 10240 /dev/block/platform/msm_sdcc.1/by-name/userdata
+    # LGE_UPDATE_END
+
+    # Keeping following partitions outside fstab file. As user may not have
+    # these partition flashed on the device. Failure to mount any partition in fstab file
+    # results in failure to launch late-start class.
+
+    # LGE_UPDATE_START
+    # change e2fsck option from -fy to -p for booting time performance fx1-bsp-fs@lge.com 
+    wait /dev/block/platform/msm_sdcc.1/by-name/cache
+    exec /system/bin/e2fsck -p /dev/block/platform/msm_sdcc.1/by-name/cache
+    # LGE_UPDATE_END
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/cache /cache nosuid nodev barrier=1
+
+    # LGE_UPDATE_START
+    # change e2fsck option from -fy to -p for booting time performance fx1-bsp-fs@lge.com 
+    wait /dev/block/platform/msm_sdcc.1/by-name/persist
+    exec /system/bin/e2fsck -p /dev/block/platform/msm_sdcc.1/by-name/persist
+    # LGE_UPDATE_END
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persist /persist nosuid nodev barrier=1
+
+    wait /dev/block/platform/msm_sdcc.1/by-name/modem
+    mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
+
+# 2012.09.21 yuntaek.kim@lge.com Add Immersion Vibrator[S]
+    # TouchSense Kernel Module - disable if it's not necessary
+    insmod /system/lib/kmodules/tspdrv.ko
+# 2012.09.21 yuntaek.kim@lge.com Add Immersion Vibrator[E]
+
+on boot
+
+# [LGE_S][IPSecVPN] 20120201, iamjm.oh@lge.com : Authentec IPSecVPN Kernel Module install
+    insmod /system/lib/modules/vpnclient.ko ssh_procfs_uid=1000 ssh_procfs_gid=1000
+# [LGE_E][IPSecVPN] 20120201, iamjm.oh@lge.com : Authentec IPSecVPN Kernel Module install
+# Define TCP buffer sizes for various networks
+#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+    setprop net.tcp.buffersize.default 4096,87380,110208,4096,16384,110208
+    setprop net.tcp.buffersize.wifi    524288,1048576,2097152,262144,524288,1048576
+    setprop net.tcp.buffersize.lte     4094,1187380,3220608,4096,1116384,3220608
+    setprop net.tcp.buffersize.umts    4094,87380,110208,4096,16384,110208
+    setprop net.tcp.buffersize.hspa    4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.hsupa   4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.hsdpa   4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
+    setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
+    setprop net.tcp.buffersize.evdo_b  4094,187380,1262144,4096,116384,1262144
+
+# Assign TCP buffer thresholds to be ceiling value of technology maximums
+# Increased technology maximums should be reflected here.
+    write /proc/sys/net/core/rmem_max  3220608
+    write /proc/sys/net/core/wmem_max  3220608
+
+# donguk.ki incoming_call file for ghost finger
+   chown system system /sys/devices/virtual/input/lge_touch/incoming_call
+	
+   chown system system /sys/class/leds/pwr-led/brightness
+# LGE_UPDATE_START
+# This is requested by VZW. Do not refer or copy below. This is for only VZW.
+# 2012-04-23, G1-FS@lge.com
+    setprop ro.device.memory.system 0
+    setprop ro.device.memory.internal 8
+# LGE_UPDATE_END
+
+    # Adjust socket buffer to enlarge TCP receive window for high bandwidth
+    write /proc/sys/net/ipv4/tcp_adv_win_scale  1
+    write /proc/sys/net/ipv4/tcp_syn_retries  1
+
+#[LG_BTUI] Add for WBS  [minwoo2.kim@lge.com 2012]
+    setprop service.brcm.bt.wbs 1	
+
+   write /sys/devices/i2c-3/3-0024/cyttsp_update_fw 1
+   write /sys/devices/i2c-3/3-005b/update_fw 1
+   start qcamerasvr
+
+exfat_boot
+    # LGE_CHANGE_S EXFAT TEST  [taek.lee@lge.com][2012-07-23] TUXERA
+    insmod /system/lib/modules/texfat.ko
+
+on post-fs-data
+   mkdir /data/tombstones 0771 system system
+   mkdir /tombstones/modem 0771 system system
+   mkdir /tombstones/lpass 0771 system system
+   mkdir /tombstones/wcnss 0771 system system
+   mkdir /tombstones/dsps 0771 system system
+
+#Battery Fake mode
+   chown system system /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/power_supply/battery/pseudo_batt
+   chmod 0660 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/power_supply/battery/pseudo_batt
+
+  #Widevine 
+  # Overlap with init.fx1.rc
+  #  mkdir /persist-lg/widevine 0770 system system
+  #  chown system system /persist-lg/widevine
+  #  chmod 0770 /persist-lg/widevine
+  
+#start GNSS service interface daemon ----------
+    #Create directories for wiper services
+#    mkdir /data/wpstiles/ 0755 shell
+#    mkdir /data/wiper 0755 gps qcom_oncrpc
+
+    #Create directories for QuIPS
+#    mkdir /data/misc/quipc 0770 gps system
+
+    #Create directories for Location services
+#    mkdir /data/misc/location/mq 0770 gps gps
+#    mkdir /data/misc/location/xtwifi 0770 gps gps
+#end GNSS service interface daemon ----------  
+
+#FEATURE_SDCARD_ENCRYPTION
+   setprop ro.ssbd.session /dev/block/platform/msm_sdcc.1/by-name/eksst
+   setprop ro.ssbd.offset 0
+   chmod 0755 /system/bin/ssbd
+service ssbd /system/bin/ssbd # FEATURE_SDCARD_ENCRYPTION
+    class main
+    disabled
+on property:ssbd.enable=1
+    start ssbd
+on property:ssbd.enable=0
+    stop ssbd
+#FEATURE_SDCARD_ENCRYPTION
+   
+#start camera server as daemon
+service qcamerasvr /system/bin/mm-qcamera-daemon
+        class late_start
+        user camera
+        group camera system inet input graphics
+
+#start GNSS service interface daemon ----------
+#service gsiff_daemon /system/bin/gsiff_daemon
+#    class late_start
+#    user system
+#    group gps qcom_oncrpc net_raw
+
+#service wiperiface /system/bin/wiperiface
+#    class late_start
+#    user gps
+#    group gps qcom_oncrpc net_raw
+#    oneshot
+
+#service quipc_igsn /system/bin/quipc_igsn
+#    class late_start
+#    user gps
+#    group inet gps
+#    disabled
+
+#service quipc_main /system/bin/quipc_main
+#    class late_start
+#    user gps
+#    group gps net_admin wifi inet
+#    disabled
+
+#service location_mq /system/bin/location-mq
+#    class late_start
+#    user gps
+#    group gps
+#    disabled
+        
+#service xtwifi_inet /system/bin/xtwifi-inet-agent
+#    class late_start
+#    user gps
+#    group inet gps
+#    disabled
+
+#service xtwifi_client /system/bin/xtwifi-client
+#    class late_start
+#    user gps
+#    group net_admin wifi inet gps
+#    disabled
+#end GNSS service interface daemon ----------
+
+service thermald /system/bin/thermald
+   class main
+   user root
+   group root
+   disabled
+
+service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
+   user root
+   disabled
+
+service qosmgrd /system/bin/qosmgr /system/etc/qosmgr_rules.xml
+   user system
+   group system
+   disabled
+
+service kickstart /system/bin/qcks -i /firmware/image/
+    oneshot
+    disabled
+
+service mdm_helper /system/bin/mdm_helper
+    class main
+    onrestart setprop ro.service.mdm_helper_restarted "true"
+    disabled
+
+service qrngd /system/bin/qrngd -f
+   class main
+   user root
+   group root
+
+service qseecomd /system/bin/qseecomd
+   class late_start
+   user system
+   group system
+
+# Start kickstart if mdm is detected
+on property:ro.baseband=mdm
+    mkdir /data/qcks 0770 system system
+    start kickstart
+
+
+# Start up mdm_helper if sglte detected
+on property:ro.baseband=sglte
+    mkdir /data/misc/mdmhelperdata 0700
+    start mdm_helper
+
+service usf_tester /system/bin/usf_tester
+    user system
+    group system inet
+    disabled
+
+service usf_epos /system/bin/usf_epos
+    user system
+    group system inet
+    disabled
+
+service usf_gesture /system/bin/usf_gesture
+    user system
+    group system inet
+    disabled
+
+service usf_p2p /system/bin/usf_p2p
+    user system
+    group system inet
+    disabled
+
+service usf_hovering /system/bin/usf_hovering
+    user system
+    group system inet
+    disabled
+
+service usf-post-boot /system/bin/sh /system/etc/usf_post_boot.sh
+    class late_start
+    user root
+    disabled
+    oneshot
+
+on property:init.svc.bootanim=stopped
+    start usf-post-boot
+
+# Change touch keyguard sysfs for ghost finger detection
+    chown system system /sys/devices/virtual/input/lge_touch/keyguard
+
+# LG animated logo
+service bootlogo /sbin/bootlogo_l1v
+  class main
+  user root
+  group root
+  disabled
+  oneshot
+#+++ BRCM
+# dhcp service for pan-nap/pan-u     
+service dhcpcd_brcm-pan /system/bin/dhcpcd -ABKL
+	class main
+	disabled
+	oneshot
+
+service iprenew_brcm-pan /system/bin/dhcpcd -n
+	class main
+	disabled
+	oneshot
+
+# chenge the btld's priority -7 -> -16 (to make same with ANDROID_PRIORITY_AUDIO (-16) [minwoo2.kim@lge.com 2012/12/17]
+#service btld /system/bin/logwrapper /system/bin/btld -hb 3000000 -pf /system/bin/CM4334B0_0368_TestConfig.hcd #-lpm 1
+service btld /system/bin/logwrapper /system/bin/btld -hb 4000000 -pf /system/bin/BCM4334B0_002.001.013.0271.0333.hcd -lpm 1 -nice -16
+    user root
+    group bluetooth net_bt_admin
+    disabled
+    oneshot
+
+# start btld if soft_onoff is enabled
+on property:service.brcm.bt.soft_onoff=1
+    start btld
+
+# stop btld if soft_onoff is disabled
+on property:service.brcm.bt.soft_onoff=0
+    stop btld
+
+#STOPSHIP: Remove logwrapper and -d option before production
+service bluetoothd /system/bin/logwrapper /system/bin/bluetoothd -d -n
+    class main
+    socket bluetooth stream 660 bluetooth bluetooth
+    socket dbus_bluetooth stream 660 bluetooth bluetooth
+# init.rc does not yet support applying capabilities, so run as root and
+# let bluetoothd drop uid to bluetooth with the right linux capabilities
+    group bluetooth net_bt_admin misc
+    disabled
+#--- BRCM
+
+service rctd /system/bin/rctd
+    class late_start
+    user root
+    group root
+
+# [LGE_S][IPSecVPN] 20120201, iamjm.oh@lge.com : Authentec IPSecVPN Service & IPSecVpn modules permission change
+service vpnclientpm /system/bin/vpnclientpm -O /data/data/com.ipsec.vpnclient/vpnclientpm.txt -D*Pm*=99,*Netconfig*=99 -K*=99 -u 1000
+# uid dropped to system when capabilities are set
+  class main
+  group system net_admin net_raw
+  disabled
+#  user system
+service secstarter /system/bin/secstarter
+  class main
+  user system
+  group system net_admin net_raw
+# [LGE_E][IPSecVPN] 20120201, iamjm.oh@lge.com : Authentec IPSecVPN Service & IPSecVpn modules permission change
+# 2012.09.21 yuntaek.kim@lge.com Add Immersion Vibrator[S]
+# TouchSense Player Service
+service immvibed /system/bin/immvibed
+  class main
+  user shell
+  group shell
+  oneshot
+# 2012.09.21 yuntaek.kim@lge.com Add Immersion Vibrator[E]
+# 20120131 gunwoo1.kim@lge.com [LogService] service and property definition for logging [START]
+
+on boot
+    chown system system /sys/power/lge_logstart
+    chmod 0660 /sys/power/lge_logstart
+
+service logging_prepare /system/bin/sh /etc/logging_prepare.sh
+	disabled
+	oneshot
+
+on property:persist.service.logging_prepare=1
+	start logging_prepare
+
+on property:persist.service.logging_prepare=0
+	stop logging_prepare
+
+service logging_android /system/bin/sh /etc/logging_android.sh
+	disabled
+
+on property:persist.service.logging_android=1
+	start logging_android
+
+on property:persist.service.logging_android=0
+	stop logging_android
+
+service alogging_main /system/bin/sh /etc/logging_android_apart.sh main
+	disabled
+
+on property:persist.service.alogging_main=1
+	start alogging_main
+
+on property:persist.service.alogging_main=0
+	stop alogging_main
+
+service alogging_system /system/bin/sh /etc/logging_android_apart.sh system
+	disabled
+
+on property:persist.service.alogging_system=1
+	start alogging_system
+
+on property:persist.service.alogging_system=0
+	stop alogging_system
+
+service alogging_radio /system/bin/sh /etc/logging_android_apart.sh radio
+	disabled
+
+on property:persist.service.alogging_radio=1
+	start alogging_radio
+
+on property:persist.service.alogging_radio=0
+	stop alogging_radio
+
+service alogging_events /system/bin/sh /etc/logging_android_apart.sh events
+	disabled
+
+on property:persist.service.alogging_events=1
+	start alogging_events
+
+on property:persist.service.alogging_events=0
+	stop alogging_events
+
+service logging_kernel /system/bin/sh /etc/logging_kernel.sh
+	disabled
+
+on property:persist.service.logging_kernel=1
+	start logging_kernel
+
+on property:persist.service.logging_kernel=0
+	stop logging_kernel
+
+service alogging_kernel /system/bin/sh /etc/logging_kernel_apart.sh
+	disabled
+
+on property:persist.service.alogging_kernel=1
+	start alogging_kernel
+
+on property:persist.service.alogging_kernel=0
+	stop alogging_kernel
+
+# 20120131 gunwoo1.kim@lge.com [LogService] service and property definition for logging [END]
+
+# LGE_CHANGE_S, [Data_Patch_027] [hwansuk.kang@lge.com], 2011-08-19 <Packet Capture Support in Log Service>
+service logging_packet /system/xbin/tcpdump -i any -p -C 4 -W 25 -Z root -s 0 -w /mnt/sdcard/log/packet.pcap
+	disabled
+	oneshot
+
+on property:persist.service.logging_packet=1
+	start logging_packet
+
+on property:persist.service.logging_packet=0
+	stop logging_packet
+# LGE_CHANGE_E, [Data_Patch_027] [hwansuk.kang@lge.com], 2011-08-19 <Packet Capture Support in Log Service>
+

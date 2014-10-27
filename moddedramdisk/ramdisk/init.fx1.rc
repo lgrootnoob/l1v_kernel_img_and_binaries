@@ -48,7 +48,6 @@ import init.lge.usb.rc
 
 on init
 	exec /sbin/setup_fs \
-		/dev/block/platform/msm_sdcc.1/by-name/userdata \
 		/dev/block/platform/msm_sdcc.1/by-name/cache \
 		/dev/block/platform/msm_sdcc.1/by-name/drm \
 		/dev/block/platform/msm_sdcc.1/by-name/mpt \
@@ -62,8 +61,6 @@ on init
 #	export EXTERNAL_ADD_STORAGE /mnt/sdcard/external_sd //chulhwhee.shim@lge.com,2012.0829 changed export value
 #	export EXTERNAL_ADD_STORAGE /storage/sdcard0/external_sd
 # LGEUPDATE 20120903 fx1-fs-bsp@lge.com, changed mount point
-	export EXTERNAL_ADD_STORAGE /storage/sdcard1
-
 	mkdir /mnt 0775 root system
 	mkdir /mnt/sdcard 0000 system system
 

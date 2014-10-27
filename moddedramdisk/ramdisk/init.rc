@@ -48,13 +48,14 @@ loglevel 3
     mount cgroup none /acct cpuacct
     mkdir /acct/uid
     mkdir /storage
-    mkdir /storage/sdcard1
+    mkdir /storage/sdcard1 7777 root sdcard_rw
     chown system system /storage
     chmod 0777 /storage
-    chown system system /storage/sdcard1
-    chmod 0777 /storage/sdcard1
+    #chown system system /storage/sdcard1
+    #chmod 0777 /storage/sdcard1
     mount vfat /dev/block/platform/msm_sdcc.3/by-num/p1 /storage/sdcard1
     setprop EXTERNAL_STORAGE_STATE mounted
+    export EXTERNAL_ADD_STORAGE /storage/sdcard1
     mkdir /system
     mkdir /data 0771 system system
     mount ext4 loop@/storage/sdcard1/userdata.img /data
